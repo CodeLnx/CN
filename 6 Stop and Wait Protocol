@@ -1,14 +1,15 @@
 set ns [new Simulator]
-set n0 [$ns node]
-set n1 [$ns node]
-
-$ns at 0.0 "$n0 label Sender"
-$ns at 0.0 "$n1 label Receiver"
 
 set nam [open out.nam w]
 $ns namtrace-all $nam
 set tr [open out.tr w]
 $ns trace-all $tr
+
+set n0 [$ns node]
+set n1 [$ns node]
+
+$ns at 0.0 "$n0 label Sender"
+$ns at 0.0 "$n1 label Receiver"
 
 $ns duplex-link $n0 $n1 0.2Mb 200ms DropTail
 $ns queue-limit $n0 $n1 10

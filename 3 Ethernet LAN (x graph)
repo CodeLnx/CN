@@ -45,7 +45,7 @@ proc finish {} {
     close $tr
     close $nam
     exec nam out.nam &
-    exec /home/harshag/Downloads/XGraph/bin/xgraph tcp1.xg tcp2.xg &     /*use only "xgraph" instead of path if doesnt work*/ 
+    exec /home/harshag/Downloads/XGraph/bin/xgraph tcp1.xg tcp2.xg &     /*use only "xgraph" instead of path if doesnt work then use path of xgraph in the system*/ 
     exit 0
 }
 

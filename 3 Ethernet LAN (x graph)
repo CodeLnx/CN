@@ -1,6 +1,4 @@
-3set ns [new Simulator]
-$ns color 1 blue
-$ns color 2 red
+set ns [new Simulator]
 set tr [open out.tr w]
 $ns trace-all $tr
 set nam [open out.nam w]
@@ -29,18 +27,17 @@ $tcp1 set class_ 1
 $tcp2 set class_ 2
 
 $ns attach-agent $n4 $tcp1
-$ns attach-agent $n2 $sink1
 $ns attach-agent $n1 $tcp2
+$ns attach-agent $n2 $sink1
 $ns attach-agent $n5 $sink2
-
-set cbr1 [new Application/Traffic/CBR]
-set cbr2 [new Application/Traffic/CBR]
-
-$cbr1 attach-agent $tcp1
-$cbr2 attach-agent $tcp2
 
 $ns connect $tcp1 $sink1
 $ns connect $tcp2 $sink2
+
+set cbr1 [new Application/Traffic/CBR]
+set cbr2 [new Application/Traffic/CBR]
+$cbr1 attach-agent $tcp1
+$cbr2 attach-agent $tcp2
 
 proc finish {} {
     global ns tr nam

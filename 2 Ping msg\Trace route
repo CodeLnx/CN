@@ -29,24 +29,23 @@ Agent/Ping instproc recv { from rtt }  {
 set p0 [new Agent/Ping]
 $p0 set class_ 1
 $ns attach-agent $n0 $p0
-
 set p1 [new Agent/Ping]
 $p1 set class_ 1 
 $ns attach-agent $n5 $p1
 $ns connect $p0 $p1
+
 $ns queue-limit $n2 $n3 2
 $ns duplex-link-op $n2 $n3 queuePos 0.5
 
 set tcp [new Agent/TCP]
 $tcp set class_ 2
 set sink [new Agent/TCPSink]
-
 $sink set class_ 1
 
 $ns attach-agent $n0 $tcp
 $ns attach-agent $n5 $sink
-
 $ns connect $tcp $sink
+
 set cbr [new Application/Traffic/CBR]
 $cbr attach-agent $tcp
 
